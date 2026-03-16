@@ -8,6 +8,8 @@ echo "Done with setup!"
 
 echo "Starting application"
 pushd ${DIR}
+source ${DIR}/.venv/bin/activate
 python main.py $1
+deactivate
 popd
 echo "Done!"
