@@ -56,6 +56,7 @@ def main():
         text_scale=1
     )
 
+    win_name = f"The Pi Academy Object Detector - {model_key}"
     while True:
         ret, frame = cap.read()
 
@@ -64,10 +65,11 @@ def main():
             break
 
         annotated_frame = process_frame(frame, model, box_annotator)
+        cv2.namedWindow(win_name, cv2.WINDOW_NORMAL)
+        cv2.setWindowProperty(win_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+        cv2.imshow(win_name, annotated_frame)
 
-        cv2.imshow(f"The Pi Academy Object Detector - {model_key}", annotated_frame)
-
-        if cv2.waitKey(20) == 27:
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()

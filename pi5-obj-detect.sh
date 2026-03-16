@@ -1,0 +1,3 @@
+#!/bin/env bash
+
+python main.py $1
